@@ -1,0 +1,15 @@
+# Activar el motor de reescritura
+RewriteEngine On
+
+# Si la solicitud no es para un archivo o directorio existente,
+# y si un archivo .php con el mismo nombre existe, reescribir a .php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([^/]+)/?$ $1.php [L]
+# Si la solicitud no es para un archivo o directorio existente,
+# y si NO existe un archivo .php con el mismo nombre,
+# y si un archivo .html con el mismo nombre existe, reescribir a .html
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteCond %{REQUEST_FILENAME}.php !-f
+RewriteRule ^([^/]+)/?$ $1.html [L]

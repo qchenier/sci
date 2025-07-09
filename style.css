@@ -1,0 +1,1340 @@
+/* ==================== Variables CSS ==================== */
+:root {
+    /* Paleta de Colores Inspirada en SCI y Estilo IBM */
+    --primary-color: #0f62fe; /* Azul IBM principal (más vibrante) */
+    --secondary-color: #0043ce; /* Azul más oscuro para hover/detalles */
+    --text-color: #161616;      /* Casi negro para texto principal (IBM usa esto) */
+    --secondary-text-color: #525252; /* Gris oscuro para texto secundario */
+    --light-text-color: #f4f4f4;  /* Texto claro para fondos oscuros */
+    --background-color: #ffffff; /* Fondo principal blanco */
+    --secondary-background-color: #f4f4f4; /* Gris muy claro para secciones alternas */
+    --border-color: #e0e0e0;    /* Color para bordes sutiles */
+    --focus-color: #0f62fe;      /* Color para outlines de foco (accesibilidad) */
+
+    /* Tipografía */
+    --font-family-base: 'IBM Plex Sans', 'Lato', sans-serif; /* Prioriza IBM Plex Sans */
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500; /* IBM usa bastante 500 */
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    /* Otros */
+    --container-width: 1140px;
+    --header-height: 70px;
+    --standard-padding: 80px 0; /* Aumentado significativamente */
+    --standard-spacing: 1.5rem; /* Espaciado base entre elementos */
+}
+
+/* ==================== Reset Básico y Estilos Globales ==================== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px; /* Base para REMs */
+}
+
+body {
+    font-family: var(--font-family-base);
+    font-weight: var(--font-weight-regular);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    color: var(--primary-color);
+    font-weight: var(--font-weight-semibold); /* Más definición */
+    margin-bottom: var(--standard-spacing);
+    line-height: 1.3;
+}
+
+h1 { font-size: 3rem; font-weight: var(--font-weight-bold); } /* Más grande y bold */
+h2 { font-size: 2.5rem; text-align: center; margin-bottom: 3rem;}
+h3 { font-size: 1.5rem; color: var(--text-color); font-weight: var(--font-weight-medium);} /* H3 en color texto */
+
+p {
+    margin-bottom: var(--standard-spacing);
+    color: var(--secondary-text-color);
+    font-size: 1.1rem; /* Párrafos más legibles */
+    max-width: 65ch; /* Mejor legibilidad de línea */
+}
+section p { /* Párrafos dentro de secciones no necesariamente limitados */
+     max-width: none;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+a:hover { color: var(--secondary-color); }
+a:focus { outline: 2px solid var(--focus-color); outline-offset: 2px; } /* Accesibilidad */
+
+img { display: block; max-width: 100%; height: auto; }
+ul { list-style: none; }
+
+/* ==================== Cabecera (Estilo IBM - Revisado) ==================== */
+.site-header {
+    /* CAMBIO: Fondo gris claro para diferenciar */
+    background-color: var(--secondary-background-color);
+    height: var(--header-height);
+    /* CAMBIO: Borde inferior un poco más sutil */
+    border-bottom: 1px solid #e0e0e0; /* Usando var(--border-color) si prefieres */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.logo a {
+    font-size: 1.8rem;
+    font-weight: var(--font-weight-bold);
+    /* CAMBIO: Color del logo a texto principal (casi negro) */
+    color: var(--text-color);
+    letter-spacing: -1px;
+    text-decoration: none; /* Asegurar que no haya subrayado */
+}
+/* Opcional: Hover effect para el logo si quieres */
+/* .logo a:hover {
+    color: var(--primary-color);
+} */
+
+.main-navigation { display: none; } /* Oculto por defecto, mostrar en desktop */
+.main-navigation.active { display: block; }
+
+.main-navigation ul {
+    display: flex;
+    gap: 35px; /* CAMBIO: Un poco más de espacio entre links */
+}
+
+.main-navigation a {
+    /* CAMBIO: Color base de links a texto secundario (gris oscuro) */
+    color: var(--secondary-text-color);
+    font-weight: var(--font-weight-medium); /* Peso medio para links */
+    padding-bottom: 5px; /* Espacio para el borde inferior */
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+    font-size: 0.95rem; /* Ligeramente más pequeño si se prefiere */
+}
+
+.main-navigation a:hover {
+     /* CAMBIO: Hover a color primario (azul) */
+    color: var(--primary-color);
+    border-bottom-color: transparent; /* Quitar borde en hover si no es activo */
+}
+.main-navigation a.active {
+    /* Estado activo: Color primario y borde inferior */
+    color: var(--primary-color);
+    font-weight: var(--font-weight-semibold); /* Un poco más de peso para activo */
+    border-bottom-color: var(--primary-color);
+}
+
+/* ... otros estilos ... */
+
+/* Botón Hamburguesa (visible en móvil) */
+.menu-toggle {
+    display: none; /* Oculto por defecto */
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+@media (max-width: 768px) { /* O el breakpoint que hayas definido */
+    .menu-toggle {
+        display: block; /* Mostrar en móvil */
+    }
+
+    .main-navigation {
+        display: none; /* Menú oculto por defecto en móvil */
+        position: absolute;
+        top: var(--header-height); /* Debajo de la cabecera */
+        left: 0;
+        width: 100%;
+        background-color: var(--secondary-background-color); /* O el color que prefieras */
+        border-bottom: 1px solid var(--border-color);
+        padding: 20px 0;
+        z-index: 999; /* Para que esté por encima de otro contenido */
+    }
+
+    .main-navigation.active { /* Cuando el menú está activo/abierto */
+        display: block;
+    }
+
+    .main-navigation ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-navigation li {
+        margin: 10px 0;
+    }
+}
+
+@media (min-width: 769px) { /* O el breakpoint + 1px */
+    .main-navigation {
+        display: block !important; /* Asegurar que se muestre en desktop */
+        position: static; /* Resetear posición */
+        width: auto;
+        background-color: transparent;
+        border-bottom: none;
+        padding: 0;
+    }
+    .main-navigation ul {
+        flex-direction: row;
+    }
+    .main-navigation li {
+        margin-left: 35px; /* O el margen que tenías */
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
+
+/* ==================== Contenido Principal ==================== */
+main {
+    padding-top: var(--header-height);
+}
+
+section {
+    padding: var(--standard-padding);
+}
+
+/* ==================== Sección Hero (2 Columnas) ==================== */
+.hero-section {
+    background-color: var(--background-color); /* Fondo blanco */
+    padding-top: 100px; /* Más espacio arriba */
+    padding-bottom: 100px;
+}
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    gap: 50px; /* Espacio entre texto y visual */
+}
+
+.hero-content {
+    flex: 1 1 55%; /* Ocupa un poco más de la mitad */
+}
+.hero-content h1 { color: var(--primary-color); }
+.hero-content p { color: var(--secondary-text-color); font-size: 1.2rem; margin-bottom: 2rem;}
+
+.hero-visual {
+    flex: 1 1 45%;
+}
+.visual-placeholder { /* Estilo temporal para el visual */
+    background-color: var(--secondary-background-color);
+    border: 1px dashed var(--border-color);
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary-text-color);
+    font-style: italic;
+    border-radius: 8px;
+}
+.visual-placeholder::before { content: 'Visual/Imagen Aquí'; }
+
+
+/* ==================== Botones Reutilizables (Estilo IBM) ==================== */
+.button {
+    display: inline-block;
+    padding: 14px 30px; /* Más padding */
+    border-radius: 0; /* Sin bordes redondeados */
+    font-weight: var(--font-weight-medium);
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+    border: 1px solid transparent; /* Borde base */
+    font-size: 1rem;
+}
+.button:hover { transform: translateY(-1px); } /* Movimiento sutil */
+.button:active { transform: translateY(0); }
+
+.button-primary {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    border-color: var(--primary-color);
+}
+.button-primary:hover { background-color: var(--secondary-color); border-color: var(--secondary-color); }
+
+.button-secondary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+.button-secondary:hover { background-color: var(--primary-color); color: var(--light-text-color); }
+
+/* ==================== Sección Resumen de Servicios ==================== */
+.services-overview-section {
+    background-color: var(--secondary-background-color);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px; /* Más espacio */
+    margin-top: 3rem;
+}
+
+.service-box {
+    background-color: var(--background-color);
+    padding: 40px; /* Más padding interno */
+    border: 1px solid var(--border-color);
+    border-radius: 0; /* Sin bordes redondeados */
+    display: flex;
+    flex-direction: column; /* Organiza contenido verticalmente */
+    transition: box-shadow 0.3s ease;
+}
+.service-box:hover { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); }
+
+.service-icon {
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+}
+.service-icon svg { width: 48px; height: 48px; } /* Tamaño de iconos SVG */
+
+.service-box h3 {
+    margin-bottom: 1rem;
+    font-size: 1.3rem; /* Ajuste tamaño H3 */
+}
+
+.service-box p {
+    font-size: 1rem; /* Ajuste tamaño P */
+    color: var(--secondary-text-color);
+    margin-bottom: auto; /* Empuja el enlace hacia abajo */
+    padding-bottom: 1.5rem; /* Espacio antes del enlace */
+}
+
+.learn-more {
+    font-weight: var(--font-weight-semibold);
+    color: var(--primary-color);
+    display: inline-block; /* Para que no ocupe toda la línea */
+    margin-top: auto; /* Asegura que esté al final */
+}
+.learn-more:hover { color: var(--secondary-color); }
+
+/* ==================== Sección Confianza / Partner ==================== */
+.trust-section {
+    text-align: center;
+    padding: 60px 0; /* Menos padding vertical que otras secciones */
+}
+.trust-section p {
+    max-width: 750px;
+    margin: 0 auto var(--standard-spacing) auto;
+    font-size: 1.1rem;
+    color: var(--secondary-text-color);
+}
+.partner-logos { margin-top: 2rem; display: flex; justify-content: center; gap: 40px; align-items: center; }
+.partner-logo { max-height: 50px; /* Ajustar según logos */ opacity: 0.7; transition: opacity 0.3s ease; }
+.partner-logo:hover { opacity: 1; }
+
+/* ==================== Sección CTA Secundaria ==================== */
+.secondary-cta-section {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    text-align: center;
+    padding: var(--standard-padding);
+}
+.secondary-cta-section h2 { color: var(--light-text-color); }
+.secondary-cta-section p {
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+}
+/* Hereda estilo de button-secondary, pero invertido para fondo oscuro */
+.secondary-cta-section .button-secondary {
+     background-color: transparent;
+     color: var(--light-text-color);
+     border-color: var(--light-text-color);
+}
+.secondary-cta-section .button-secondary:hover {
+     background-color: var(--light-text-color);
+     color: var(--primary-color);
+}
+
+/* ==================== Pie de Página ==================== */
+.site-footer {
+    background-color: var(--background-color);
+    border-top: 1px solid var(--border-color);
+    color: var(--secondary-text-color);
+    padding: 40px 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+.site-footer p { margin-bottom: 0.5rem; color: var(--secondary-text-color);}
+.footer-nav { margin-top: 1rem; }
+.footer-nav ul { display: flex; justify-content: center; gap: 20px; }
+.footer-nav a { color: var(--secondary-text-color); font-weight: var(--font-weight-medium);}
+.footer-nav a:hover { color: var(--primary-color); }
+
+/* ==================== Media Queries (Responsividad Mejorada) ==================== */
+@media (min-width: 769px) { /* Estilos para Desktop */
+    .menu-toggle { display: none; } /* Ocultar botón hamburguesa */
+    .main-navigation { display: block; } /* Mostrar navegación normal */
+}
+
+@media (max-width: 768px) {
+    h1 { font-size: 2.4rem; }
+    h2 { font-size: 2rem; }
+    section { padding: 60px 0; }
+
+    .hero-container {
+        flex-direction: column; /* Apilar texto y visual */
+        text-align: center;
+    }
+    .hero-content { order: 2; } /* Texto debajo del visual */
+    .hero-visual { order: 1; margin-bottom: 2rem; }
+    .visual-placeholder { height: 250px; }
+    .hero-content p { margin-left: auto; margin-right: auto;} /* Centrar párrafo */
+
+    .services-grid { grid-template-columns: 1fr; }
+
+    /* Estilos básicos para menú móvil (requiere JS) */
+    .main-navigation {
+        display: none; /* Oculto hasta que JS lo muestre */
+        position: absolute;
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        background-color: var(--background-color);
+        border-bottom: 1px solid var(--border-color);
+        padding: 20px 0;
+    }
+    .main-navigation.active { display: block; }
+    .main-navigation ul { flex-direction: column; align-items: center; }
+    .main-navigation li { margin: 10px 0; }
+}
+/* ==================== Pie de Página (Estilo IBM - Fondo Oscuro) ==================== */
+:root {
+    /* ... (tus otras variables) ... */
+    --dark-footer-bg: #262626;      /* Nuevo: Gris oscuro para fondo footer */
+    --footer-text-color: #f4f4f4;   /* Nuevo: Texto claro principal para footer */
+    --footer-link-hover: #ffffff;   /* Nuevo: Blanco para hover de links en footer */
+    --footer-secondary-text: #c6c6c6; /* Nuevo: Gris claro para texto secundario/copyright */
+    --footer-border-color: #393939; /* Nuevo: Borde sutil para el fondo oscuro */
+}
+
+
+.site-footer {
+    background-color: var(--dark-footer-bg); /* CAMBIO: Fondo oscuro */
+    color: var(--footer-secondary-text);     /* CAMBIO: Color de texto base */
+    padding: 60px 0 30px 0;
+    font-size: 0.95rem;
+    /* border-top: 1px solid var(--border-color); */ /* Opcional: Quitar borde superior si no gusta con fondo oscuro */
+}
+
+.footer-main {
+    margin-bottom: 40px;
+}
+
+.footer-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+}
+
+.footer-column h4 {
+    font-size: 1rem;
+    font-weight: var(--font-weight-semibold);
+    color: var(--footer-text-color); /* CAMBIO: Texto claro para títulos */
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-column a {
+    color: var(--footer-secondary-text); /* CAMBIO: Links en gris claro */
+    font-weight: var(--font-weight-regular);
+    transition: color 0.2s ease;
+}
+
+.footer-column a:hover {
+    color: var(--footer-link-hover); /* CAMBIO: Hover a blanco */
+    text-decoration: underline;
+}
+
+/* --- Barra Inferior del Footer --- */
+.footer-bottom {
+    border-top: 1px solid var(--footer-border-color); /* CAMBIO: Borde oscuro */
+    padding-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-bottom-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-bottom-nav a {
+    color: var(--footer-secondary-text); /* CAMBIO: Links inferiores en gris claro */
+    font-size: 0.9rem;
+    font-weight: var(--font-weight-medium);
+}
+.footer-bottom-nav a:hover {
+    color: var(--footer-link-hover); /* CAMBIO: Hover a blanco */
+}
+
+.footer-copyright {
+    font-size: 0.85rem;
+    color: var(--footer-secondary-text); /* CAMBIO: Copyright en gris claro */
+    text-align: right;
+    margin: 0;
+    flex-grow: 1;
+}
+
+
+/* --- Responsividad del Footer (Sin cambios aquí, ya estaba hecho) --- */
+@media (max-width: 768px) {
+    .footer-columns {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 30px;
+    }
+    .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .footer-bottom-nav {
+        order: 2;
+        margin-top: 15px;
+    }
+     .footer-bottom-nav ul {
+        justify-content: center;
+        gap: 20px;
+    }
+    .footer-copyright {
+        order: 1;
+        text-align: center;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+     .footer-columns {
+        grid-template-columns: 1fr;
+        gap: 40px;
+     }
+     .footer-column {
+         text-align: center;
+     }
+     .footer-column ul {
+         margin-top: 1rem;
+     }
+}
+/* ==================== Estilos Páginas Internas (Revisado) ==================== */
+
+/* --- Hero de Página Interna --- */
+.page-hero-section {
+    padding: 60px 0; /* Menos padding que el hero principal */
+    /* background-color: var(--secondary-background-color); */ /* Fondo claro opcional */
+}
+
+.breadcrumb {
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+.breadcrumb ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 0.5rem;
+    color: var(--secondary-text-color);
+}
+.breadcrumb li:not(:last-child)::after {
+    content: '/';
+    margin-left: 0.5rem;
+    color: #c6c6c6;
+}
+.breadcrumb a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+.breadcrumb li[aria-current="page"] {
+    font-weight: var(--font-weight-medium);
+    color: var(--text-color);
+}
+
+.hero-layout-split { /* Layout para Hero de 2 columnas */
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+.hero-layout-split .hero-content { flex: 1 1 55%; }
+.hero-layout-split .hero-visual { flex: 1 1 45%; }
+.hero-layout-split .hero-content h1 { margin-top: 0; } /* Reset margin si viene de breadcrumb */
+
+
+/* --- Secciones de Contenido con Layout Grid --- */
+.content-section {
+    padding: var(--standard-padding);
+}
+.content-section h2 {
+    text-align: left; /* Alinear H2 a la izquierda */
+    margin-bottom: 2.5rem;
+}
+
+.content-layout-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+    gap: 60px; /* Espacio entre columnas */
+    align-items: center; /* Alinear verticalmente */
+}
+.content-layout-grid.reverse { /* Modificador para invertir columnas */ }
+.content-layout-grid.reverse .visual-content { order: 1; }
+.content-layout-grid.reverse .text-content { order: 2; }
+
+
+.text-content h3, .text-content h4 { /* Estilo para subtítulos dentro del texto */
+    color: var(--text-color);
+    font-weight: var(--font-weight-semibold);
+    margin-top: 1.5rem; /* Espacio antes de subtítulos */
+    margin-bottom: 1rem;
+}
+
+/* --- Listas de Características --- */
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+}
+.feature-list li {
+    margin-bottom: 0.7rem;
+    padding-left: 2rem; /* Más espacio para icono */
+    position: relative;
+    font-size: 1rem;
+    color: var(--secondary-text-color);
+}
+.feature-list li::before {
+    content: ''; /* Vacío por defecto, usar background-image */
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-color: var(--primary-color); /* Color del icono */
+    -webkit-mask-image: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" viewBox="0 0 24 24" fill="%23ffffff"%3E%3Cpath d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"%2F%3E%3C%2Fsvg%3E'); /* Check SVG como máscara */
+    mask-image: url('data:image/svg+xml,%3Csvg xmlns="http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg" viewBox="0 0 24 24" fill="%23ffffff"%3E%3Cpath d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"%2F%3E%3C%2Fsvg%3E');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 0;
+    top: 4px; /* Ajustar verticalmente */
+}
+
+/* --- Sección de Beneficios "¿Por Qué?" (Estilo Condensado) --- */
+.why-section {
+     padding: var(--standard-padding);
+}
+.why-section h2 { text-align: center; margin-bottom: 3rem; }
+
+.benefits-grid-condensed {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Columnas más pequeñas */
+    gap: 30px;
+}
+.benefit-item {
+    text-align: center; /* Centrar contenido */
+     /* Quitar borde/fondo si se prefiere más simple */
+     background: none;
+     border: none;
+     padding: 15px;
+}
+.benefit-icon {
+    font-size: 2.5rem; /* Icono/Emoji más grande */
+    margin-bottom: 1rem;
+    line-height: 1;
+}
+.benefit-item h4 { /* Título del beneficio */
+     font-size: 1.1rem;
+     font-weight: var(--font-weight-semibold);
+     color: var(--text-color);
+     margin-bottom: 0.5rem;
+}
+.benefit-item p {
+    font-size: 0.95rem;
+    color: var(--secondary-text-color);
+    line-height: 1.5;
+}
+
+/* --- Responsividad para Layouts de Contenido --- */
+@media (max-width: 992px) { /* Tablets y móviles grandes */
+    .content-layout-grid {
+        grid-template-columns: 1fr; /* Apilar columnas */
+        gap: 40px;
+    }
+    .content-layout-grid.reverse .visual-content { order: 1; } /* Visual siempre primero al apilar */
+    .content-layout-grid.reverse .text-content { order: 2; }
+    .text-content, .visual-content { text-align: center; } /* Centrar contenido al apilar */
+    .text-content .button { margin-left: auto; margin-right: auto; display: table; } /* Centrar botón */
+    .feature-list { text-align: left; display: inline-block; } /* Alinear lista a la izq pero centrar bloque */
+}
+@media (max-width: 768px) {
+     .hero-layout-split { flex-direction: column; } /* Apilar hero */
+     .hero-layout-split .hero-visual { margin-top: 2rem; }
+     .why-section h2 { font-size: 2rem; }
+     .benefits-grid-condensed { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); } /* Ajustar en móvil */
+}
+/* ==================== Estilos Página Servicios A2 ==================== */
+
+/* --- Sección Soluciones A2 --- */
+.a2-solutions-section {
+    padding: var(--standard-padding);
+}
+.a2-solutions-section h2 {
+    text-align: center; /* Centrar título principal */
+    margin-bottom: 1rem;
+}
+.a2-solutions-section > .container > p { /* Estilo para el párrafo introductorio */
+     text-align: center;
+     max-width: 800px;
+     margin-left: auto;
+     margin-right: auto;
+     margin-bottom: 3rem;
+     color: var(--secondary-text-color);
+     font-size: 1.1rem;
+}
+
+.solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 2 o 3 columnas */
+    gap: 30px;
+}
+
+.solution-box {
+    background-color: var(--background-color);
+    padding: 30px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    text-align: center; /* Centrar contenido de la caja */
+    transition: box-shadow 0.3s ease;
+}
+.solution-box:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.solution-icon {
+    font-size: 2.5rem; /* Tamaño icono/emoji */
+    margin-bottom: 1rem;
+    line-height: 1;
+    color: var(--primary-color); /* Opcional: color para icono */
+}
+
+.solution-box h3 {
+    font-size: 1.2rem;
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-color);
+    margin-bottom: 0.8rem;
+}
+
+.solution-box p {
+    font-size: 0.95rem;
+    color: var(--secondary-text-color);
+    margin-bottom: auto; /* Empuja el enlace abajo */
+    padding-bottom: 1.5rem;
+    flex-grow: 1; /* Asegura que el párrafo ocupe espacio */
+}
+
+.solution-box .learn-more { /* Reutiliza estilo de .learn-more */
+     margin-top: auto;
+     display: table; /* Ayuda a centrar si es necesario */
+     margin-left: auto;
+     margin-right: auto;
+}
+
+/* --- Sección Cumplimiento SNAT --- */
+.snat-section {
+    padding: 60px 0; /* Padding específico */
+}
+
+/* Hereda estilo de .button-secondary pero necesita ajustes para fondo oscuro */
+.snat-section .button-secondary {
+     background-color: transparent;
+     color: var(--light-text-color);
+     border-color: var(--light-text-color);
+}
+.snat-section .button-secondary:hover {
+     background-color: var(--light-text-color);
+     color: var(--primary-color);
+}
+
+/* Ajustes responsivos específicos si son necesarios para A2 */
+@media (max-width: 768px) {
+    .a2-solutions-section > .container > p {
+        font-size: 1rem;
+    }
+    .solutions-grid {
+         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+/* ==================== Estilos Página Conectividad ==================== */
+
+/* --- Estilos para cajas de texto en sección "Para Quién" --- */
+.text-content-box {
+    background-color: var(--background-color); /* Fondo blanco si la sección es gris */
+    padding: 30px;
+    border: 1px solid var(--border-color);
+    /* Podría añadir un icono arriba si se desea */
+}
+
+.box-icon { /* Estilo para el icono dentro de la caja */
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1;
+    color: var(--primary-color);
+    /* text-align: center; si se prefiere centrado */
+}
+
+.text-content-box h3 {
+     font-size: 1.3rem;
+     margin-bottom: 1rem;
+     color: var(--text-color);
+}
+.text-content-box p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.feature-list.simple li { /* Estilo alternativo para listas más simples */
+     margin-bottom: 0.5rem;
+     font-size: 0.95rem;
+}
+.feature-list.simple li::before {
+    width: 14px; /* Icono check un poco más pequeño */
+    height: 14px;
+    top: 3px;
+}
+.text-content-box .learn-more {
+    margin-top: 1.5rem;
+    display: inline-block;
+}
+
+
+/* Ajustes responsivos específicos para Conectividad si son necesarios */
+@media (max-width: 768px) {
+    /* La grid .content-layout-grid ya se apila a 1 columna */
+     .text-content-box {
+         margin-bottom: 20px; /* Espacio extra entre cajas si se apilan */
+     }
+     .text-content-box:last-child {
+         margin-bottom: 0;
+     }
+}
+/* ==================== Estilos Página de Contacto ==================== */
+
+/* --- Layout General Contacto --- */
+.contact-layout-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; /* Columna de info un poco más pequeña */
+    gap: 60px; /* Espacio entre columnas */
+    align-items: flex-start; /* Alinear al inicio */
+}
+
+/* --- Columna Información de Contacto --- */
+.contact-info h3 {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.8rem;
+    gap: 15px;
+}
+
+.contact-icon {
+    font-size: 1.5rem; /* Tamaño del icono/emoji */
+    color: var(--primary-color);
+    margin-top: 2px; /* Ajuste vertical ligero */
+    flex-shrink: 0; /* Evita que el icono se encoja */
+}
+
+.contact-item div {
+    line-height: 1.7;
+}
+
+.contact-item strong {
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-color);
+}
+
+.contact-item a {
+    color: var(--primary-color);
+    word-break: break-word; /* Evitar desbordamiento de emails/links largos */
+}
+.contact-item a:hover {
+    text-decoration: underline;
+}
+
+/* --- Mapa Opcional --- */
+.map-container {
+    margin-top: 2.5rem;
+    border: 1px solid var(--border-color);
+}
+.map-container h4 {
+     font-size: 1.1rem;
+     padding: 15px;
+     margin: 0;
+     background-color: var(--secondary-background-color);
+     border-bottom: 1px solid var(--border-color);
+     color: var(--text-color);
+}
+.map-container iframe {
+    display: block; /* Evita espacio extra debajo del iframe */
+}
+
+
+/* --- Columna Formulario de Contacto --- */
+.contact-form-container h3 {
+     font-size: 1.5rem;
+     color: var(--text-color);
+     margin-bottom: 1rem; /* Menos espacio si hay un párrafo debajo */
+}
+.contact-form-container p {
+     margin-bottom: 2rem;
+     font-size: 1rem;
+}
+
+.contact-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: var(--font-weight-medium);
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form input[type="tel"],
+.contact-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    background-color: var(--background-color); /* Fondo blanco */
+    font-family: var(--font-family-base);
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--text-color);
+    transition: border-color 0.2s ease;
+    border-radius: 0; /* Sin bordes redondeados */
+    appearance: none; /* Quitar estilos por defecto del navegador */
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 1px var(--primary-color); /* Efecto de foco sutil */
+}
+
+.contact-form textarea {
+    resize: vertical; /* Permitir redimensionar solo verticalmente */
+    min-height: 120px;
+}
+
+.contact-form .required {
+    color: #d72c16; /* Rojo para asterisco */
+    font-weight: bold;
+    margin-left: 2px;
+}
+
+.contact-form .form-submit {
+    margin-top: 2rem;
+}
+
+.contact-form .form-notice {
+     margin-top: 1rem;
+     font-size: 0.85rem;
+     color: var(--secondary-text-color);
+}
+.contact-form .form-notice .required { font-weight: normal; }
+
+/* Estilo para mensajes de estado (éxito/error) */
+#form-status {
+    margin-top: 1.5rem;
+    padding: 15px;
+    border-radius: 4px;
+    display: none; /* Oculto por defecto */
+    font-weight: var(--font-weight-medium);
+}
+#form-status.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    display: block;
+}
+#form-status.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    display: block;
+}
+
+
+/* --- Responsividad para Contacto --- */
+@media (max-width: 992px) { /* Tablets */
+    .contact-layout-grid {
+        grid-template-columns: 1fr; /* Apilar columnas */
+        gap: 50px;
+    }
+     .contact-info { order: 2; } /* Formulario primero en móvil */
+     .contact-form-container { order: 1; }
+}
+
+@media (max-width: 768px) {
+    /* Ajustar paddings o tamaños si es necesario */
+}
+/* ==================== Estilos Página de Clientes ==================== */
+
+/* --- Sección Logos Clientes --- */
+.client-logos-section {
+    padding: var(--standard-padding);
+    background-color: var(--background-color); /* Fondo blanco */
+}
+
+.logos-grid {
+    display: grid;
+    /* Ajusta minmax para controlar tamaño y número de logos por fila */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 40px; /* Espacio entre logos */
+    align-items: center; /* Centrar verticalmente */
+    justify-items: center; /* Centrar horizontalmente */
+}
+
+.logo-item {
+    /* max-width: 160px; */ /* Limitar ancho máximo si es necesario */
+    filter: grayscale(100%); /* Logos en escala de grises */
+    opacity: 0.7;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+}
+.logo-item:hover {
+    filter: grayscale(0%); /* Color al pasar el mouse */
+    opacity: 1;
+}
+.logo-item img {
+    max-height: 60px; /* Limitar altura máxima */
+    width: auto; /* Ancho automático para mantener proporción */
+}
+
+/* --- Sección Casos de Éxito --- */
+.case-study-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Layout 2 columnas por defecto */
+    gap: 50px;
+    align-items: center;
+    margin-bottom: 4rem; /* Espacio entre casos de éxito */
+    padding-bottom: 4rem;
+    border-bottom: 1px solid var(--border-color);
+}
+.case-study-item:last-of-type { /* Quitar borde inferior al último */
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.case-study-item.reverse .case-study-visual { order: 1; }
+.case-study-item.reverse .case-study-content { order: 2; }
+
+.case-study-content h3 {
+    font-size: 1.6rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+.case-study-content p {
+    font-size: 1rem;
+    color: var(--secondary-text-color);
+    margin-bottom: 1rem;
+}
+.case-study-content strong {
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-color);
+}
+.case-study-tags {
+    display: block;
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    color: var(--primary-color);
+    font-weight: var(--font-weight-medium);
+}
+
+.case-study-visual .visual-placeholder { /* Hereda estilo si usas placeholder */
+    /* Ajusta altura o estilo específico si es necesario */
+    height: 300px;
+}
+
+/* --- Testimonios --- */
+.testimonial-item {
+    background-color: var(--background-color); /* Fondo blanco si la sección es gris */
+    padding: 30px 40px;
+    margin-top: 3rem; /* Espacio arriba */
+    border-left: 4px solid var(--primary-color); /* Borde izquierdo distintivo */
+    text-align: center;
+}
+.testimonial-item blockquote {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--secondary-text-color);
+    margin: 0 0 1rem 0;
+    border: none;
+    padding: 0;
+}
+.testimonial-item cite {
+    font-style: normal;
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-color);
+}
+
+/* --- Responsividad Clientes --- */
+@media (max-width: 992px) {
+    .logos-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 30px;
+    }
+    .case-study-item {
+        grid-template-columns: 1fr; /* Apilar columnas */
+        gap: 30px;
+        padding-bottom: 3rem;
+        margin-bottom: 3rem;
+    }
+     .case-study-item.reverse .case-study-visual { order: 1; }
+     .case-study-item.reverse .case-study-content { order: 2; }
+     .case-study-visual { margin-bottom: 1rem; }
+}
+@media (max-width: 768px) {
+    .logos-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+}
+/* ==================== Estilos Páginas Legales y FAQ ==================== */
+
+.legal-content-section, .faq-content-section {
+    padding: var(--standard-padding);
+}
+
+/* Estilo común para páginas legales */
+.legal-content-section .container {
+    max-width: 800px; /* Limitar ancho para mejor legibilidad */
+}
+.legal-content-section h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.last-updated {
+    text-align: center;
+    color: var(--secondary-text-color);
+    margin-bottom: 3rem;
+    font-size: 0.9rem;
+}
+.legal-content-section article h2 {
+    font-size: 1.6rem;
+    color: var(--text-color);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color); /* Separador sutil */
+}
+.legal-content-section article h2:first-of-type {
+    margin-top: 0; /* Sin margen superior para el primer H2 */
+}
+.legal-content-section article p {
+    margin-bottom: 1.2rem;
+    line-height: 1.7;
+    font-size: 1rem;
+}
+.legal-content-section article ul {
+    list-style: disc; /* Estilo de lista estándar */
+    margin-left: 25px;
+    margin-bottom: 1.2rem;
+}
+.legal-content-section article li {
+    margin-bottom: 0.5rem;
+    line-height: 1.7;
+}
+
+/* --- Estilos para FAQ --- */
+.faq-category-title {
+    font-size: 1.8rem;
+    color: var(--text-color);
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.8rem;
+    display: inline-block; /* Para que el borde no ocupe todo */
+}
+/* Centrar el título h2 */
+.faq-content-section .container > h2 {
+     display: table;
+     margin-left: auto;
+     margin-right: auto;
+}
+.faq-category-title:first-of-type {
+    margin-top: 0;
+}
+
+.faq-list {
+    max-width: 900px; /* Limitar ancho de la lista de FAQs */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3rem;
+}
+
+.faq-item {
+    border: 1px solid var(--border-color);
+    margin-bottom: 1rem;
+    border-radius: 4px; /* Bordes redondeados suaves */
+    background-color: var(--background-color);
+}
+.faq-item[open] { /* Estilo cuando está abierto */
+     background-color: #f9f9f9;
+}
+
+.faq-question { /* El <summary> */
+    padding: 18px 25px;
+    font-size: 1.1rem;
+    font-weight: var(--font-weight-medium);
+    color: var(--text-color);
+    cursor: pointer;
+    list-style: none; /* Ocultar marcador por defecto */
+    position: relative; /* Para posicionar pseudo-elemento */
+    transition: background-color 0.2s ease;
+}
+.faq-question:hover {
+    background-color: var(--secondary-background-color);
+}
+.faq-question::-webkit-details-marker { display: none; } /* Ocultar marcador en Webkit */
+
+/* Añadir un icono +/- (opcional) */
+.faq-question::after {
+    content: '+';
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    transition: transform 0.2s ease;
+}
+.faq-item[open] > .faq-question::after {
+    content: '−';
+    transform: translateY(-50%);
+}
+
+.faq-answer {
+    padding: 0px 25px 20px 25px; /* Padding para la respuesta */
+    line-height: 1.7;
+    font-size: 1rem;
+    color: var(--secondary-text-color);
+    border-top: 1px dashed var(--border-color); /* Separador sutil */
+    margin-top: 10px; /* Espacio entre pregunta y respuesta */
+}
+.faq-answer p:last-child {
+    margin-bottom: 0;
+}
+
+.faq-footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 30px;
+    background-color: var(--secondary-background-color);
+    border-radius: 4px;
+}
+.faq-footer p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+/* --- Responsividad Legales/FAQ --- */
+@media (max-width: 768px) {
+    .legal-content-section .container, .faq-list {
+        max-width: 100%; /* Usar ancho completo en móvil */
+    }
+    .faq-question { padding-right: 50px; /* Más espacio para icono en móvil */ }
+    .faq-question::after { right: 20px; }
+}
+/* Ajustes para secciones dentro de .main-content */
+.main-content > section { /* Usar '>' para seleccionar solo hijos directos */
+    padding: 0;
+    margin-bottom: var(--standard-padding);
+    /* Añadir esto para asegurar que no se desborden */
+    max-width: 100%;
+    overflow: hidden; /* Prevenir desbordamientos inesperados */
+}
+.main-content > section:last-child {
+    margin-bottom: 0;
+}
+
+/* Mantener la regla para contenedores anidados (por si acaso) */
+.main-content .container {
+    max-width: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Asegurar que los H2 dentro de las secciones no causen problemas */
+.main-content section h2 {
+     /* Puedes mantener los estilos existentes o resetear márgenes si sospechas que causan problemas */
+     /* margin-left: 0; margin-right: 0; */
+}
+
+/* Asegurar que los grids internos se comporten */
+.main-content .services-grid,
+.main-content .benefits-grid-condensed,
+.main-content .partner-logos {
+    /* Podrían necesitar max-width: 100% si están dentro de otro elemento */
+    box-sizing: border-box; /* Buena práctica */
+}
+
+/* Asegurar que el hero interno no se desborde */
+.main-content .hero-container {
+    max-width: 100%;
+    box-sizing: border-box;
+}

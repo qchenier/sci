@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CAMBIO: Título específico -->
+    <title>SCI - Contacto | Hablemos de sus Necesidades Tecnológicas</title>
+
+    <!-- CAMBIO: Descripción específica -->
+    <meta name="description" content="Contacte con SCI en Guanare, Portuguesa. Complete nuestro formulario o llámenos para consultas sobre Cloud, Software A2, Conectividad y soluciones TI en Venezuela.">
+    <meta name="keywords" content="SCI Contacto, Teléfono SCI, Dirección SCI, Email SCI, Formulario Contacto TI, Soporte Técnico SCI, Ventas SCI, Guanare, Portuguesa">
+    <meta name="author" content="Soluciones Corporativas para Internet, C.A.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="./images/x-icon/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+    <!-- ==================== Cabecera (Sin Cambios) ==================== -->
+    <header class="site-header">
+        <div class="container header-content">
+            <div class="logo"><a href="/"><img src="images/logotipo_sci.png" alt="SCI"></a></div>    
+            <nav class="main-navigation">
+                 <ul>
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="#services">Servicios</a></li>
+                    <li><a href="/quienes-somos">Quiénes Somos</a></li>
+                    <li><a href="/clientes">Clientes</a></li>
+                    <li><a href="/contacto" class="active">Contacto</a></li>
+                </ul>
+            </nav>
+             <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+        </div>
+    </header>
+
+    <!-- ==================== Contenido Principal (Específico para Contacto) ==================== -->
+    <main>
+
+        <!-- === Sección Hero Contacto === -->
+        <section id="contact-hero" class="page-hero-section" style="text-align: center;"> <!-- Hero centrado -->
+             <div class="container">
+                 <!-- Breadcrumbs -->
+                <nav aria-label="breadcrumb" class="breadcrumb" style="justify-content: center;"> <!-- Centrar breadcrumb -->
+                    <ol>
+                        <li><a href="/">Inicio</a></li>
+                        <li aria-current="page">Contacto</li>
+                    </ol>
+                </nav>
+                <div class="page-hero-content">
+                    <h1>Póngase en Contacto</h1>
+                    <p>Estamos listos para escuchar sus requerimientos y ofrecerle la mejor solución tecnológica. Utilice el formulario o nuestros datos de contacto directo.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- === Sección Información y Formulario === -->
+        <section id="contact-form-section" class="content-section">
+            <div class="container">
+                 <div class="contact-layout-grid"> <!-- Grid 2 columnas: Info | Formulario -->
+
+                     <!-- Columna 1: Información de Contacto -->
+                     <div class="contact-info">
+                         <h3>Información Directa</h3>
+                         <p>Puede contactarnos a través de los siguientes medios:</p>
+
+                         <div class="contact-item">
+                             <span class="contact-icon">📍</span> <!-- Icono ejemplo -->
+                             <div>
+                                 <strong>Dirección:</strong><br>
+                                 CC Aurora Planta Alta, Oficinas 1-5<br>
+                                 Guanare, Edo. Portuguesa<br>
+                                 Venezuela
+                             </div>
+                         </div>
+
+                         <div class="contact-item">
+                             <span class="contact-icon">📞</span> <!-- Icono ejemplo -->
+                             <div>
+                                 <strong>Teléfono:</strong><br>
+                                 <a href="tel:+582572516827">+58 257-252-0536</a>
+                                 <!-- Añadir más teléfonos si es necesario -->
+                             </div>
+                         </div>
+
+                         <div class="contact-item">
+                            <span class="contact-icon">✉️</span> <!-- Icono ejemplo -->
+                             <div>
+                                 <strong>Correo Electrónico:</strong><br>
+                                 <a href="mailto:info@sci.net.ve">info@sci.net.ve</a><br>
+                                 <a href="mailto:ventas@sci.net.ve">ventas@sci.net.ve</a><br>
+                                 <a href="mailto:soporte@sci.net.ve">soporte@sci.net.ve</a>
+                             </div>
+                         </div>
+
+                         <div class="contact-item">
+                             <span class="contact-icon">🕒</span> <!-- Icono ejemplo -->
+                              <div>
+                                 <strong>Horario de Atención:</strong><br>
+                                 Lunes a Viernes: 8:00 AM - 12:00 PM / 2:00 PM - 5:00 PM
+                                 <!-- (Ajustar horario según sea real) -->
+                             </div>
+                         </div>
+
+                         <!-- Opcional: Mapa -->
+                         <!-- <div class="map-container">
+                             <h4>Ubicación</h4>
+                             <iframe src="URL_DE_GOOGLE_MAPS_EMBED" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                         </div> -->
+                     </div>
+
+                     <!-- Columna 2: Formulario de Contacto -->
+                     <div class="contact-form-container">
+                         <h3>Envíenos un Mensaje</h3>
+                         <p>Complete el formulario y le responderemos a la brevedad posible.</p>
+                         <!-- IMPORTANTE: El action="#" es un placeholder. Necesitarás un backend o servicio (Formspree, Netlify Forms, etc.) para procesar el envío -->
+                         <form id="contact-form" class="contact-form">
+                             <div class="form-group">
+                                 <label for="name">Nombre Completo <span class="required">*</span></label>
+                                 <input type="text" id="name" name="name" required>
+                             </div>
+                             <div class="form-group">
+                                 <label for="email">Correo Electrónico <span class="required">*</span></label>
+                                 <input type="email" id="email" name="email" required>
+                             </div>
+                             <div class="form-group">
+                                 <label for="phone">Teléfono (Opcional)</label>
+                                 <input type="tel" id="phone" name="phone">
+                             </div>
+                             <div class="form-group">
+                                 <label for="subject">Asunto <span class="required">*</span></label>
+                                 <input type="text" id="subject" name="subject" required>
+                             </div>
+                             <div class="form-group">
+                                 <label for="message">Mensaje <span class="required">*</span></label>
+                                 <textarea id="message" name="message" rows="6" required></textarea>
+                             </div>
+                              <div class="form-group form-submit">
+                                 <button type="submit" class="button button-primary">Enviar Mensaje &rarr;</button>
+                             </div>
+                             <p class="form-notice"><small>Los campos marcados con <span class="required">*</span> son obligatorios.</small></p>
+                         </form>
+                         <!-- Mensaje de estado del formulario (para JS) -->
+                         <div id="form-status"></div>
+                     </div>
+
+                 </div>
+            </div>
+        </section>
+
+    </main>
+
+<!-- ==================== Pie de Página (Sin Cambios) ==================== -->
+    <footer class="site-footer">
+        <div class="container"> 
+            <div class="footer-main"> 
+                <div class="footer-columns"> 
+                    <div class="footer-column"> 
+                        <h4>Servicios</h4> 
+                        <ul> 
+                            <li><a href="/servicios-cloud">Infraestructura Cloud</a></li> 
+                            <li><a href="/servicios-software-a2">Software de Gestión (A2)</a></li> 
+                            <li><a href="/servicios-conectividad">Conectividad Dedicada</a></li> 
+                        </ul> 
+                    </div> 
+                    <div class="footer-column"> 
+                        <h4>Empresa</h4> 
+                        <ul> 
+                            <li><a href="/quienes-somos">Quiénes Somos</a></li> 
+                            <li><a href="/clientes">Clientes</a></li> 
+                        </ul> 
+                    </div> 
+                    <div class="footer-column"> 
+                        <h4>Contacto</h4> 
+                        <ul> 
+                            <li><a href="/contacto">Formulario de Contacto</a></li> 
+                            <li><a href="/faq">Preguntas Frecuentes</a></li> 
+                        </ul> 
+                    </div> 
+                    <div class="footer-column">
+                        <h4>Legal</h4> 
+                        <ul> 
+                            <li><a href="/politica-privacidad">Política de Privacidad</a></li> 
+                            <li><a href="/terminos-servicio">Términos de Servicio</a></li> 
+                        </ul> 
+                    </div> 
+                </div> 
+            </div> 
+            <div class="footer-bottom"> 
+                <nav class="footer-bottom-nav"> 
+                    <ul> 
+                        <li><a href="/contacto">Contacto</a></li> 
+                        <li><a href="/politica-privacidad">Privacidad</a></li> 
+                        <li><a href="/terminos-servicio">Términos</a></li> 
+                    </ul> 
+                </nav> 
+                <p class="footer-copyright">&copy; <span id="current-year"></span> Soluciones Corporativas para Internet, C.A. | RIF: J-404347461. Todos los derechos reservados.</p> 
+            </div> 
+        </div>
+    </footer>
+
+    <!-- Enlace al archivo JavaScript (Sin Cambios, pero podría usarse para validación/envío de formulario) -->
+    <script src="script.js"></script>
+    <!-- Opcional: Script específico para el formulario -->
+    <!-- <script src="contact-form.js"></script> -->
+
+</body>
+</html>
