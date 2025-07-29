@@ -1,0 +1,230 @@
+<!-- ==================== Cabecera (CON MEGA MENÚ) ==================== -->
+<header class="site-header">
+    <div class="container header-content">        
+        <div class="logo"><a href="/"><img src="images/logotipo_sci.png" alt="SCI"></a></div>
+        <nav class="main-navigation">
+            <ul>
+                <!--<li><a href="index.html">Inicio</a></li>-->
+                
+                <!-- INICIO DEL MEGA MENÚ PARA "SERVICIOS" (COPIA FIEL DE IBM) -->
+                <li class="menu-item-has-children">
+                    
+                    <a href="#">Servicios</a> <!-- Añadimos un indicador -->
+
+                    <!-- Submenú para MÓVIL (ul anidada) -->
+                    <ul class="sub-menu">
+                        <li><a href="servicios-cloud.html">Infraestructura Cloud</a></li>
+                        <li><a href="servicios-software-a2.html">Software de Gestión</a></li>
+                        <li><a href="servicios-conectividad.html">Conectividad Dedicada</a></li>
+                        <!--<li><a href="#">Seguridad Gestionada</a></li>
+                        <li><a href="#">Consultoría TI</a></li>-->
+                    </ul>
+
+                    <div class="mega-menu-panel">
+                        <div class="mega-menu-layout">
+                            <!-- Columna 1: Navegación Primaria (Persiana) - COPIADO DE IBM -->
+                            <ul class="primary-nav">
+                                <li class="primary-nav-item"><a href="#" class="primary-nav-link" data-target="#destacado-details">Destacado</a></li>
+                                <li class="primary-nav-item"><a href="#" class="primary-nav-link" data-target="#ia-details">IA y machine learning</a></li>
+                                <li class="primary-nav-item"><a href="#" class="primary-nav-link" data-target="#analytics-details">Analytics</a></li>
+                                <!--<li class="primary-nav-item"><a href="#" class="primary-nav-link" data-target="#gestion-details">Gestión del ciclo de vida de los activos</a></li>-->
+                                <li class="primary-nav-item"><a href="#" class="primary-nav-link" data-target="#automatizacion-details">Automatización empresarial</a></li>
+                                <li class="primary-nav-item"><a href="#" class="primary-nav-link" data-target="#contenedores-details">Contenedores</a></li>
+                                <li class="primary-nav-item is-active"><a href="#" class="primary-nav-link" data-target="#databases-details">Databases</a></li>
+                                <li class="primary-nav-item"><a href="#" class="primary-nav-link" data-target="#devops-details">DevOps e ingeniería</a></li>
+                                <li class="primary-nav-item"><a href="#" class="primary-nav-link" data-target="#automatizacion-ti-details">Automatización de TI</a></li>
+                                <li class="primary-nav-item"><a href="#" class="primary-nav-link" data-target="#middleware-details">Middleware</a></li>
+                                <li class="primary-nav-item"><a href="#" class="primary-nav-link" data-target="#network-details">Network</a></li>
+                                <li class="primary-nav-item"><a href="#" class="primary-nav-link" data-target="#sistemas-operativos-details">Sistemas operativos</a></li>
+                                <!--<li class="primary-nav-item"><a href="#" class="primary-nav-link" data-target="#quantum-details">Quantum</a></li>-->
+                                <li class="primary-nav-item"><a href="#" class="primary-nav-link" data-target="#security-details">Security & identity</a></li>
+                                <li class="primary-nav-item"><a href="#" class="primary-nav-link" data-target="#servidores-details">Servidores</a></li>
+                                <li class="primary-nav-item"><a href="#" class="primary-nav-link" data-target="#almacenamiento-details">Almacenamiento</a></li>
+                                <!--<li class="primary-nav-item"><a href="#" class="primary-nav-link" data-target="#cadena-suministro-details">Cadena de suministro</a></li>-->
+                            </ul>
+
+                            <!-- Columna 2: Contenido Secundario (Detalles / Sub-Menú) -->
+                            <div class="secondary-content">
+                                <!-- PANEL PARA DATABASES (ACTIVO POR DEFECTO Y CON CONTENIDO REAL DE IBM) -->
+                                <div id="databases-details" class="secondary-content-panel is-active">
+                                    <div class="secondary-content-header">
+                                        <h4><a href="#">Databases →</a></h4>
+                                        <p>Almacene, consulte y analice datos estructurados</p>
+                                    </div>
+                                    <ul class="secondary-content-columns">
+
+                                    <div>
+                                        <li>
+                                            <a href="#">
+                                                <strong>Cloudant</strong>
+                                                <span>Almacén de documentos JSON gestionado conforme a PCI en Apache CouchDB</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <strong>Cloud Databases for EnterpriseDB</strong>
+                                                <span>PostgreSQL con características adicionales de rendimiento, seguridad y gestión</span>
+                                            </a>
+                                        </li>               
+                                        <li>
+                                            <a href="#">
+                                                <strong>Db2</strong>
+                                                <span>Software de gestión de datos que incluye Db2 Database</span>
+                                            </a>
+                                        </li>
+                                    </div>    
+                                    <div>        
+                                        <li>
+                                            <a href="#">
+                                                <strong>Cloud Databases for MongoDB</strong>
+                                                <span>Almacén de documentos NoSQL JSON gestionado</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <strong>Cloud Databases para Elastic Search</strong>
+                                                <span>Almacén de documentos JSON para búsquedas de texto completo</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <strong>Cloud Databases for MySQL</strong>
+                                                <span>Base de datos SQL gestionada</span>
+                                            </a>
+                                        </li>
+                                    </div>
+                                    <div>        
+                                        <li>
+                                            <a href="#">
+                                                <strong>Information Management System (IMS)</strong>
+                                                <span>Base de datos y sistema de gestión para transacciones de gran volumen</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <strong>Cloud Databases for PostgreSQL</strong>
+                                                <span>Base de datos SQL gestionada con características avanzadas</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <strong>Informix</strong>
+                                                <span>Base de datos integrable para SQL, NoSQL, series temporales y datos espaciales</span>
+                                            </a>
+                                        </li>
+                                    </div>    
+                                    </ul>
+                                </div>
+                                
+                                <!-- PANELES DE EJEMPLO PARA LAS OTRAS CATEGORÍAS (SIN CONTENIDO DETALLADO) -->
+                                <!-- ESTOS SON NECESARIOS PARA QUE EL JAVASCRIPT FUNCIONE -->
+                                <div id="destacado-details" class="secondary-content-panel">
+                                <div class="secondary-content-header">
+                                    <h4><a href="#">Destacado →</a></h4>
+                                    <p>Nuestras soluciones más populares e innovadoras.</p>
+                                </div>
+                                </div>
+                                <div id="ia-details" class="secondary-content-panel">
+                                    <div class="secondary-content-header">
+                                        <h4><a href="#">IA y machine learning →</a></h4>
+                                        <p>Potencie su negocio con el poder de la Inteligencia Artificial.</p>
+                                    </div>
+                                </div>
+                                <div id="analytics-details" class="secondary-content-panel">
+                                    <div class="secondary-content-header">
+                                        <h4><a href="#">Analytics →</a></h4>
+                                        <p>Transforme sus datos en insights accionables.</p>
+                                    </div>
+                                </div>
+                                <div id="gestion-details" class="secondary-content-panel">
+                                    <div class="secondary-content-header">
+                                        <h4><a href="#">Gestión del ciclo de vida de los activos →</a></h4>
+                                        <p>Optimice el rendimiento y la vida útil de sus activos.</p>
+                                    </div>
+                                </div>
+                                <div id="automatizacion-details" class="secondary-content-panel">
+                                    <div class="secondary-content-header">
+                                        <h4><a href="#">Automatización empresarial →</a></h4>
+                                        <p>Automatice procesos para mejorar la eficiencia.</p>
+                                    </div>
+                                </div>
+                                <div id="contenedores-details" class="secondary-content-panel">
+                                    <div class="secondary-content-header">
+                                        <h4><a href="#">Contenedores →</a></h4>
+                                        <p>Desarrolle y despliegue aplicaciones de forma ágil y escalable.</p>
+                                    </div>
+                                </div>
+                                <div id="devops-details" class="secondary-content-panel">
+                                    <div class="secondary-content-header">
+                                        <h4><a href="#">DevOps e ingeniería →</a></h4>
+                                        <p>Acelere la entrega de software con prácticas de DevOps.</p>
+                                    </div>
+                                </div>
+                                <div id="automatizacion-ti-details" class="secondary-content-panel">
+                                    <div class="secondary-content-header">
+                                        <h4><a href="#">Automatización de TI →</a></h4>
+                                        <p>Simplifique la gestión de su infraestructura de TI.</p>
+                                    </div>
+                                </div>
+                                <div id="middleware-details" class="secondary-content-panel">
+                                    <div class="secondary-content-header">
+                                        <h4><a href="#">Middleware →</a></h4>
+                                        <p>Conecte sus aplicaciones y datos de forma segura.</p>
+                                    </div>
+                                </div>
+                                <div id="network-details" class="secondary-content-panel">
+                                    <div class="secondary-content-header">
+                                        <h4><a href="#">Network →</a></h4>
+                                        <p>Soluciones de red seguras, rápidas y fiables.</p>
+                                    </div>
+                                </div>
+                                <div id="sistemas-operativos-details" class="secondary-content-panel">
+                                    <div class="secondary-content-header">
+                                        <h4><a href="#">Sistemas operativos →</a></h4>
+                                        <p>Plataformas robustas y seguras para sus cargas de trabajo.</p>
+                                    </div>
+                                </div>
+                                <div id="quantum-details" class="secondary-content-panel">
+                                    <div class="secondary-content-header">
+                                        <h4><a href="#">Quantum →</a></h4>
+                                        <p>Explore el futuro de la computación con la computación cuántica.</p>
+                                    </div>
+                                </div>
+                                <div id="security-details" class="secondary-content-panel">
+                                    <div class="secondary-content-header">
+                                        <h4><a href="#">Security & identity →</a></h4>
+                                        <p>Proteja su empresa con soluciones de seguridad e identidad.</p>
+                                    </div>
+                                </div>
+                                <div id="servidores-details" class="secondary-content-panel">
+                                    <div class="secondary-content-header">
+                                        <h4><a href="#">Servidores →</a></h4>
+                                        <p>Infraestructura potente y escalable para sus necesidades.</p>
+                                    </div>
+                                </div>
+                                <div id="almacenamiento-details" class="secondary-content-panel">
+                                    <div class="secondary-content-header">
+                                        <h4><a href="#">Almacenamiento →</a></h4>
+                                        <p>Soluciones de almacenamiento de datos flexibles y seguras.</p>
+                                    </div>
+                                </div>
+                                <div id="cadena-suministro-details" class="secondary-content-panel">
+                                    <div class="secondary-content-header">
+                                        <h4><a href="#">Cadena de suministro →</a></h4>
+                                        <p>Optimice su cadena de suministro con tecnología avanzada.</p>
+                                    </div>
+                                </div>
+                                <!--<a href="#" class="view-all-services-button">Ver todos los servicios →</a>-->
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <!-- FIN DEL MEGA MENÚ -->
+                <li><a href="quienes-somos.html">Quiénes Somos</a></li>
+                <li><a href="clientes.html">Clientes</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+         <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+    </div>
+</header>

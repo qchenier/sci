@@ -46,6 +46,7 @@ body {
     background-color: var(--background-color);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden; /* <-- AÑADE ESTA LÍNEA */
 }
 
 .container {
@@ -104,6 +105,7 @@ ul { list-style: none; }
     justify-content: space-between;
     align-items: center;
     height: 100%;
+    position: relative; /* <-- AÑADIR ESTA LÍNEA */
 }
 
 .logo a {
@@ -376,7 +378,7 @@ section {
 /* ==================== Pie de Página ==================== */
 .site-footer {
     background-color: var(--background-color);
-    border-top: 1px solid var(--border-color);
+    /*border-top: 1px solid var(--border-color);*/
     color: var(--secondary-text-color);
     padding: 40px 0;
     text-align: center;
@@ -436,12 +438,16 @@ section {
 }
 
 
+/* ===================================================================
+ * 4. FOOTER (CORREGIDO Y ALINEADO A LA IZQUIERDA)
+ * ===================================================================
+ */
+
 .site-footer {
-    background-color: var(--dark-footer-bg); /* CAMBIO: Fondo oscuro */
-    color: var(--footer-secondary-text);     /* CAMBIO: Color de texto base */
+    background-color: var(--dark-footer-bg);
+    color: var(--footer-secondary-text);
     padding: 60px 0 30px 0;
     font-size: 0.95rem;
-    /* border-top: 1px solid var(--border-color); */ /* Opcional: Quitar borde superior si no gusta con fondo oscuro */
 }
 
 .footer-main {
@@ -454,13 +460,26 @@ section {
     gap: 40px;
 }
 
+/* ESTA ES LA REGLA NUEVA/MODIFICADA */
+.footer-column {
+    text-align: left; /* 1. Alinear todo el contenido de la columna a la izquierda */
+}
+
+/* Esta regla ya no es necesaria si usas <p class="footer-column-title">
 .footer-column h4 {
+    ...
+}
+*/
+
+/* ESTA ES LA REGLA A MODIFICAR */
+.footer-column-title {
     font-size: 1rem;
     font-weight: var(--font-weight-semibold);
-    color: var(--footer-text-color); /* CAMBIO: Texto claro para títulos */
+    color: var(--footer-link-hover);
     margin-bottom: 1.5rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    opacity: 0.9; 
 }
 
 .footer-column ul {
@@ -474,19 +493,19 @@ section {
 }
 
 .footer-column a {
-    color: var(--footer-secondary-text); /* CAMBIO: Links en gris claro */
+    color: var(--footer-secondary-text);
     font-weight: var(--font-weight-regular);
     transition: color 0.2s ease;
 }
 
 .footer-column a:hover {
-    color: var(--footer-link-hover); /* CAMBIO: Hover a blanco */
+    color: var(--footer-link-hover);
     text-decoration: underline;
 }
 
 /* --- Barra Inferior del Footer --- */
 .footer-bottom {
-    border-top: 1px solid var(--footer-border-color); /* CAMBIO: Borde oscuro */
+    border-top: 1px solid var(--footer-border-color);
     padding-top: 30px;
     display: flex;
     flex-wrap: wrap;
@@ -505,24 +524,23 @@ section {
 }
 
 .footer-bottom-nav a {
-    color: var(--footer-secondary-text); /* CAMBIO: Links inferiores en gris claro */
+    color: var(--footer-secondary-text);
     font-size: 0.9rem;
     font-weight: var(--font-weight-medium);
 }
 .footer-bottom-nav a:hover {
-    color: var(--footer-link-hover); /* CAMBIO: Hover a blanco */
+    color: var(--footer-link-hover);
 }
 
 .footer-copyright {
     font-size: 0.85rem;
-    color: var(--footer-secondary-text); /* CAMBIO: Copyright en gris claro */
+    color: var(--footer-secondary-text);
     text-align: right;
     margin: 0;
     flex-grow: 1;
 }
 
-
-/* --- Responsividad del Footer (Sin cambios aquí, ya estaba hecho) --- */
+/* --- Responsividad del Footer --- */
 @media (max-width: 768px) {
     .footer-columns {
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -537,7 +555,7 @@ section {
         order: 2;
         margin-top: 15px;
     }
-     .footer-bottom-nav ul {
+    .footer-bottom-nav ul {
         justify-content: center;
         gap: 20px;
     }
@@ -548,17 +566,18 @@ section {
     }
 }
 
+/* Mantenemos el centrado para pantallas muy pequeñas, ya que se ve mejor */
 @media (max-width: 480px) {
-     .footer-columns {
+    .footer-columns {
         grid-template-columns: 1fr;
         gap: 40px;
-     }
-     .footer-column {
-         text-align: center;
-     }
-     .footer-column ul {
-         margin-top: 1rem;
-     }
+    }
+    .footer-column {
+        text-align: center; /* Aquí sí centramos */
+    }
+    .footer-column ul {
+        margin-top: 1rem;
+    }
 }
 /* ==================== Estilos Páginas Internas (Revisado) ==================== */
 
@@ -861,6 +880,7 @@ section {
          margin-bottom: 0;
      }
 }
+
 /* ==================== Estilos Página de Contacto ==================== */
 
 /* --- Layout General Contacto --- */
@@ -1337,4 +1357,259 @@ section {
 .main-content .hero-container {
     max-width: 100%;
     box-sizing: border-box;
+}
+/* ==================== Mega Menú (Estilo IBM - VERSIÓN FINAL CORREGIDA) ==================== */
+
+.menu-item-has-children {
+    position: static; /* CAMBIO: Anclaje al viewport, no al 'li' */
+}
+
+/* El panel principal del mega menú */
+.mega-menu-panel {
+    position: absolute;
+    top: var(--header-height); /* CAMBIO: Alinear con la parte inferior de la cabecera */
+    left: 0;
+    right: 0;
+    width: 100%; /* Ocupa todo el ancho del viewport */
+    background-color: rgba(0, 0, 0, 0.2); /* Fondo semitransparente como IBM */
+    
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 999; /* Justo debajo de la cabecera */
+}
+
+.menu-item-has-children.mega-menu-open > .mega-menu-panel {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Contenedor del contenido del menú para centrarlo */
+.mega-menu-layout {
+    display: flex;
+    max-width: var(--container-width); /* Ancho máximo del contenido */
+    min-height: 450px;
+    margin: 20px auto; /* Margen superior/inferior y centrado horizontal */
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Columna 1: Navegación Primaria (Persiana) */
+.mega-menu-layout > .primary-nav {
+    display: block;
+    flex-direction: column;
+    gap: 0;
+    flex-shrink: 0;
+    flex-basis: 300px;
+    background-color: var(--secondary-background-color);
+    padding: 20px 0;
+    border-right: 1px solid var(--border-color);
+    overflow-y: auto;
+}
+
+.primary-nav li.primary-nav-item {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.primary-nav li.primary-nav-item a {
+    display: block;
+    width: 100%;
+    padding: 10px 25px;
+    font-weight: var(--font-weight-regular);
+    font-size: 0.9rem;
+    color: var(--secondary-text-color);
+    border-left: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+.primary-nav li.primary-nav-item:hover a,
+.primary-nav li.primary-nav-item.is-active a {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-weight: var(--font-weight-semibold);
+    border-left-color: var(--primary-color);
+}
+
+/* Columna 2: Contenido Secundario (Detalles) */
+.secondary-content {
+    flex-grow: 1;
+    padding: 25px 40px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.secondary-content-panel { display: none; }
+.secondary-content-panel.is-active { display: block; }
+
+.secondary-content-header {
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+.secondary-content-header h4 {
+    font-size: 1.6rem;
+    font-weight: var(--font-weight-semibold);
+    color: var(--primary-color);
+    margin: 0;
+}
+.secondary-content-header h4 a { color: inherit; text-decoration: none; }
+.secondary-content-header h4 a:hover { text-decoration: underline; }
+.secondary-content-header p {
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+    color: var(--secondary-text-color);
+}
+
+.secondary-content-columns {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px 30px;
+}
+.secondary-content-columns li { display: flex; margin-bottom: 1rem; }
+.secondary-content-columns li a {
+    display: block;
+    width: 100%;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.4;
+    text-decoration: none;
+}
+.secondary-content-columns li a:hover { color: var(--primary-color); }
+.secondary-content-columns li:hover {
+    background-color: var(--secondary-background-color); /* Fondo gris claro, el mismo de la persiana */
+    border-radius: 4px; /* Bordes ligeramente redondeados, opcional */
+}
+.secondary-content-columns li a {
+    padding: 10px 12px; /* Añadir padding interno al enlace */
+    /* ... el resto de las reglas para 'li a' se mantienen ... */
+    display: block;
+    width: 100%;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.4;
+    text-decoration: none;
+    transition: color 0.2s ease; /* Añadir transición de color */
+}
+.secondary-content-columns li a:hover {
+    color: var(--primary-color);
+    background-color: transparent; /* Asegurarse de que el fondo no cambie en el enlace */
+}
+.secondary-content-columns li a strong { display: block; margin-bottom: 4px; }
+.secondary-content-columns li a span {
+    display: block;
+    font-weight: var(--font-weight-regular);
+    font-size: 0.85rem;
+    color: var(--secondary-text-color);
+    line-height: 1.5;
+}
+
+.view-all-services-button {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    font-weight: var(--font-weight-semibold);
+    color: var(--primary-color);
+    font-size: 1rem;
+    text-decoration: none;
+}
+.view-all-services-button:hover { text-decoration: underline; }
+
+/* Responsividad */
+@media (max-width: 992px) {
+    .mega-menu-panel { display: none !important; }
+}
+/* ==================== Soporte Móvil para Submenú (REVISADO) ==================== */
+
+/* Ocultar submenú móvil por defecto en todas las vistas */
+.menu-item-has-children .sub-menu {
+    display: none;
+}
+
+/* --- Estilos específicos para la vista MÓVIL --- */
+@media (max-width: 768px) {
+    
+    /* Ocultar el mega menú de escritorio en móvil (refuerzo) */
+    .mega-menu-panel {
+        display: none !important;
+    }
+    
+    /* Estilo del enlace padre "Servicios" para que actúe como un botón desplegable */
+    .menu-item-has-children > a {
+        position: relative; /* Necesario para posicionar la flecha */
+        justify-content: space-between;
+        padding-right: 35px; /* Espacio para la flecha */
+    }
+
+    /* NUEVO: Indicador de submenú (flecha) con CSS */
+    .menu-item-has-children > a::after {
+        content: '›'; /* Caracter de flecha */
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%) rotate(0deg);
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--secondary-text-color);
+        transition: transform 0.3s ease;
+    }
+
+    /* Girar la flecha cuando el submenú está abierto */
+    .menu-item-has-children.submenu-open > a::after {
+        transform: translateY(-50%) rotate(90deg);
+    }
+    
+    /* Estilos del submenú desplegado */
+    .sub-menu {
+        /* Transición de aparición suave */
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+        list-style: none;
+        padding-left: 0;
+        margin-top: 10px;
+        background-color: transparent;
+        border: none;
+        border-radius: 0;
+    }
+    
+    .menu-item-has-children.submenu-open > .sub-menu {
+        display: block;
+        max-height: 500px; /* Un valor alto para permitir la expansión */
+    }
+    
+    /* Estilos para los items del submenú */
+    .sub-menu li {
+        margin-left: 20px;
+        border-left: 1px solid var(--border-color); /* Línea guía más sutil */
+        padding-left: 15px;
+    }
+
+    .sub-menu li a {
+        padding: 8px 0;
+        font-size: 1rem; /* Tamaño de fuente consistente */
+        color: var(--secondary-text-color);
+    }
+    
+    .sub-menu li a:hover {
+        color: var(--primary-color);
+    }
+}
+
+/* --- Estilos específicos para la vista ESCRITORIO --- */
+@media (min-width: 769px) {
+    /* Ocultar el submenú móvil en escritorio */
+    .sub-menu {
+        display: none !important;
+    }
+}
 }
